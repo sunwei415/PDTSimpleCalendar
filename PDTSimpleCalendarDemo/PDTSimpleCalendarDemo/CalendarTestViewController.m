@@ -25,6 +25,9 @@
 
     [[PDTSimpleCalendarViewCell appearance] setTextDefaultColor:[UIColor whiteColor]];
 
+    [[PDTSimpleCalendarViewCell appearance] setCircleDefaultColor:[UIColor clearColor]];
+
+
     [[PDTSimpleCalendarViewWeekdayHeader appearance] setHeaderBackgroundColor:[UIColor colorWithRed:44.f/255 green:84.f/255 blue:141.f/255 alpha:1.0]];
 
     [[PDTSimpleCalendarViewWeekdayHeader appearance] setTextColor:[UIColor whiteColor]];
