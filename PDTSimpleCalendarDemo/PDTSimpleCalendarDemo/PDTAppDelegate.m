@@ -31,43 +31,61 @@
 
     [self initCustomDates];
 
-    self.window.rootViewController = [[TPRViewControllerTestContainer alloc] initWithViewControllerClasses:@[CalendarTestViewController.class]];
+//    self.window.rootViewController = [[TPRViewControllerTestContainer alloc] initWithViewControllerClasses:@[CalendarTestViewController.class]];
+    
+    PDTSimpleCalendarViewController *calendarViewController = [[PDTSimpleCalendarViewController alloc] init];
+    //This is the default behavior, will display a full year starting the first of the current month
+    [calendarViewController setDelegate:self];
+    calendarViewController.weekdayHeaderEnabled = YES;
+    calendarViewController.weekdayTextType = PDTSimpleCalendarViewWeekdayTextTypeVeryShort;
+    
+    calendarViewController.backgroundColor = [UIColor colorWithRed:78.f/255 green:121.f/255 blue:179.f/255 alpha:1.0];
+    
+    [[PDTSimpleCalendarViewCell appearance] setTextDefaultColor:[UIColor whiteColor]];
+    
+    [[PDTSimpleCalendarViewCell appearance] setCircleDefaultColor:[UIColor clearColor]];
+    
+    [[PDTSimpleCalendarViewCell appearance] setTextDefaultFont:[UIFont fontWithName:@"HYQiHei-EES" size:14]];
+    
+    [[PDTSimpleCalendarViewWeekdayHeader appearance] setHeaderBackgroundColor:[UIColor colorWithRed:44.f/255 green:84.f/255 blue:141.f/255 alpha:1.0]];
+    
+    [[PDTSimpleCalendarViewWeekdayHeader appearance] setTextColor:[UIColor whiteColor]];
 
-//    PDTSimpleCalendarViewController *hebrewCalendarViewController = [[PDTSimpleCalendarViewController alloc] init];
-//    //Example of how you can change the default calendar
-//    //Other options you can try NSPersianCalendar, NSIslamicCalendar, NSIndianCalendar, NSJapaneseCalendar, NSRepublicOfChinaCalendar
-//    NSCalendar *hebrewCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSHebrewCalendar];
-//    hebrewCalendar.locale = [NSLocale currentLocale];
-//    [hebrewCalendarViewController setCalendar:hebrewCalendar];
-//
-//    PDTSimpleCalendarViewController *dateRangeCalendarViewController = [[PDTSimpleCalendarViewController alloc] init];
-//    //For this calendar we're gonna allow only a selection between today and today + 3months.
-//    dateRangeCalendarViewController.firstDate = [NSDate date];
-//    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-//    offsetComponents.month = 3;
-//    NSDate *lastDate =[dateRangeCalendarViewController.calendar dateByAddingComponents:offsetComponents toDate:[NSDate date] options:0];
-//    dateRangeCalendarViewController.lastDate = lastDate;
-//
-//    //Set the edgesForExtendedLayout to UIRectEdgeNone
-//    if ([UIViewController instancesRespondToSelector:@selector(edgesForExtendedLayout)]) {
-//        [calendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
-//        [hebrewCalendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
-//        [dateRangeCalendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
-//    }
-//
-//    //Create Navigation Controller
-//    UINavigationController *defaultNavController = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
-//    [calendarViewController setTitle:@"SimpleCalendar"];
-//
-//    UINavigationController *hebrewNavController = [[UINavigationController alloc] initWithRootViewController:hebrewCalendarViewController];
-//    [hebrewCalendarViewController setTitle:@"Hebrew Calendar"];
-//
-//    UINavigationController *dateRangeNavController = [[UINavigationController alloc] initWithRootViewController:dateRangeCalendarViewController];
-//    [dateRangeCalendarViewController setTitle:@"Custom Range"];
-//
-//    //Create the Tab Bar Controller
-//    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-//    [tabBarController setViewControllers:@[defaultNavController, hebrewNavController, dateRangeNavController]];
+    PDTSimpleCalendarViewController *hebrewCalendarViewController = [[PDTSimpleCalendarViewController alloc] init];
+    //Example of how you can change the default calendar
+    //Other options you can try NSPersianCalendar, NSIslamicCalendar, NSIndianCalendar, NSJapaneseCalendar, NSRepublicOfChinaCalendar
+    NSCalendar *hebrewCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSHebrewCalendar];
+    hebrewCalendar.locale = [NSLocale currentLocale];
+    [hebrewCalendarViewController setCalendar:hebrewCalendar];
+
+    PDTSimpleCalendarViewController *dateRangeCalendarViewController = [[PDTSimpleCalendarViewController alloc] init];
+    //For this calendar we're gonna allow only a selection between today and today + 3months.
+    dateRangeCalendarViewController.firstDate = [NSDate date];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    offsetComponents.month = 3;
+    NSDate *lastDate =[dateRangeCalendarViewController.calendar dateByAddingComponents:offsetComponents toDate:[NSDate date] options:0];
+    dateRangeCalendarViewController.lastDate = lastDate;
+
+    //Set the edgesForExtendedLayout to UIRectEdgeNone
+    if ([UIViewController instancesRespondToSelector:@selector(edgesForExtendedLayout)]) {
+        [calendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+        [hebrewCalendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+        [dateRangeCalendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+    }
+
+    //Create Navigation Controller
+    UINavigationController *defaultNavController = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
+    [calendarViewController setTitle:@"SimpleCalendar"];
+
+    UINavigationController *hebrewNavController = [[UINavigationController alloc] initWithRootViewController:hebrewCalendarViewController];
+    [hebrewCalendarViewController setTitle:@"Hebrew Calendar"];
+
+    UINavigationController *dateRangeNavController = [[UINavigationController alloc] initWithRootViewController:dateRangeCalendarViewController];
+    [dateRangeCalendarViewController setTitle:@"Custom Range"];
+
+    //Create the Tab Bar Controller
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [tabBarController setViewControllers:@[defaultNavController, hebrewNavController, dateRangeNavController]];
 
 
     //Example of how you can now customize the calendar colors
@@ -84,7 +102,7 @@
 //    [[PDTSimpleCalendarViewHeader appearance] setSeparatorColor:[UIColor orangeColor]];
 //    [[PDTSimpleCalendarViewHeader appearance] setTextFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:8.0]];
 
-//    [self.window setRootViewController:tabBarController];
+    [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -130,18 +148,18 @@
     if ([self.customDates containsObject:date]) {
         return YES;
     }
-
+    
     return NO;
 }
 
 - (UIColor *)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller circleColorForDate:(NSDate *)date
 {
-    return [UIColor whiteColor];
+    return [UIColor clearColor];
 }
 
 - (UIColor *)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller textColorForDate:(NSDate *)date
 {
-    return [UIColor orangeColor];
+    return [UIColor colorWithRed:251.f/255 green:199.f/255 blue:7.f/255 alpha:1.0];
 }
 
 #pragma mark - Private
