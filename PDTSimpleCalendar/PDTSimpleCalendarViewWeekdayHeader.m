@@ -9,7 +9,7 @@
 #import "PDTSimpleCalendarViewWeekdayHeader.h"
 
 const CGFloat PDTSimpleCalendarWeekdayHeaderSize = 12.0f;
-const CGFloat PDTSimpleCalendarWeekdayHeaderHeight = 20.0f;
+const CGFloat PDTSimpleCalendarWeekdayHeaderHeight = 35.0f;
 
 @implementation PDTSimpleCalendarViewWeekdayHeader
 
