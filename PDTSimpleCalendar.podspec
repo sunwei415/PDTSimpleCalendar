@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "PDTSimpleCalendar"
-  s.version      = "17.04.24.15"
+  s.version      = "17.04.24.16"
   s.summary      = "A simple Calendar/Date Picker with a nice iOS7/iOS8 design."
 
   s.description  = <<-DESC
@@ -18,4 +18,5 @@ Pod::Spec.new do |s|
   s.source_files  = 'PDTSimpleCalendar/**/*.{h,m}'
   s.requires_arc = true
 
+  s.dependency 'Masonry', '~> 1.0.2'
 end
