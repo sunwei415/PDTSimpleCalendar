@@ -31,7 +31,7 @@
 
     [self addChildViewController:calendarViewController];
 
-    calendarViewController.view.backgroundColor = [UIColor colorWithRed:78.f/255 green:121.f/255 blue:179.f/255 alpha:1.0];
+    calendarViewController.backgroundColor = [UIColor colorWithRed:78.f/255 green:121.f/255 blue:179.f/255 alpha:1.0];
 
     [self.view addSubview:calendarViewController.view];
 
