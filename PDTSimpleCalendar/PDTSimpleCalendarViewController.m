@@ -23,7 +23,7 @@ static const NSCalendarUnit kCalendarUnitYMD = NSCalendarUnitYear | NSCalendarUn
 
 @property (nonatomic, strong) UILabel *overlayView;
 @property (nonatomic, strong) NSDateFormatter *headerDateFormatter; //Will be used to format date in header view and on scroll.
-
+@property (nonatomic, strong) NSDateFormatter *overlayDateFormatter;
 @property (nonatomic, strong) PDTSimpleCalendarViewWeekdayHeader *weekdayHeader;
 
 // First and last date of the months based on the public properties first & lastDate
@@ -108,9 +108,18 @@ static const NSCalendarUnit kCalendarUnitYMD = NSCalendarUnitYear | NSCalendarUn
     if (!_headerDateFormatter) {
         _headerDateFormatter = [[NSDateFormatter alloc] init];
         _headerDateFormatter.calendar = self.calendar;
-        _headerDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy LLLL" options:0 locale:self.calendar.locale];
+        _headerDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"l" options:0 locale:self.calendar.locale];
     }
     return _headerDateFormatter;
+}
+
+- (NSDateFormatter *)overlayDateFormatter {
+    if (!_overlayDateFormatter) {
+        _overlayDateFormatter = [[NSDateFormatter alloc] init];
+        _overlayDateFormatter.calendar = self.calendar;
+        _overlayDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"YYYY l" options:0 locale:self.calendar.locale];
+    }
+    return _overlayDateFormatter;
 }
 
 - (NSCalendar *)calendar
@@ -404,7 +413,7 @@ static const NSCalendarUnit kCalendarUnitYMD = NSCalendarUnitYear | NSCalendarUn
     //The circle background is made using roundedCorner which is a super expensive operation, specially with a lot of items on the screen to display (like we do)
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
-
+    
     return cell;
 }
 
@@ -438,7 +447,23 @@ static const NSCalendarUnit kCalendarUnitYMD = NSCalendarUnitYear | NSCalendarUn
         PDTSimpleCalendarViewHeader *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:PDTSimpleCalendarViewHeaderIdentifier forIndexPath:indexPath];
 
         headerView.titleLabel.text = [self.headerDateFormatter stringFromDate:[self firstOfMonthForSection:indexPath.section]].uppercaseString;
-
+        
+        NSDate *firstOfMonth = [self firstOfMonthForSection:indexPath.section];
+        
+        NSUInteger weekday = [[self.calendar components: NSCalendarUnitWeekday fromDate: firstOfMonth] weekday];
+        NSInteger startOffset = weekday - self.calendar.firstWeekday;
+        startOffset += startOffset >= 0 ? 0 : self.daysPerWeek;
+        
+        NSIndexPath *index = [NSIndexPath indexPathForItem:startOffset inSection:indexPath.section];
+        UICollectionViewLayoutAttributes *att = [collectionView.collectionViewLayout layoutAttributesForItemAtIndexPath:index];
+        
+        CGFloat itemWidth = floorf(CGRectGetWidth(self.collectionView.bounds) / self.daysPerWeek);
+        
+        headerView.left.constant = att.frame.origin.x;
+        headerView.width.constant = itemWidth;
+        
+        
+        
         headerView.layer.shouldRasterize = YES;
         headerView.layer.rasterizationScale = [UIScreen mainScreen].scale;
 
@@ -485,7 +510,8 @@ static const NSCalendarUnit kCalendarUnitYMD = NSCalendarUnitYear | NSCalendarUn
     NSArray *sortedIndexPaths = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
     NSIndexPath *firstIndexPath = [sortedIndexPaths firstObject];
 
-    self.overlayView.text = [self.headerDateFormatter stringFromDate:[self firstOfMonthForSection:firstIndexPath.section]];
+    
+    self.overlayView.text = [self.overlayDateFormatter stringFromDate:[self firstOfMonthForSection:firstIndexPath.section]];
 }
 
 - (void)hideOverlayView
@@ -562,7 +588,7 @@ static const NSCalendarUnit kCalendarUnitYMD = NSCalendarUnitYear | NSCalendarUn
     NSUInteger weekday = [[self.calendar components: NSCalendarUnitWeekday fromDate: firstOfMonth] weekday];
     NSInteger startOffset = weekday - self.calendar.firstWeekday;
     startOffset += startOffset >= 0 ? 0 : self.daysPerWeek;
-
+    
     NSDateComponents *dateComponents = [NSDateComponents new];
     dateComponents.day = indexPath.item - startOffset;
 

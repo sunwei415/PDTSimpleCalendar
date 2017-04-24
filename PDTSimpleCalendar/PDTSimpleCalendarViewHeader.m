@@ -20,13 +20,13 @@ const CGFloat PDTSimpleCalendarHeaderTextSize = 12.0f;
         _titleLabel = [[UILabel alloc] init];
         [_titleLabel setFont:self.textFont];
         [_titleLabel setTextColor:self.textColor];
-        [_titleLabel setBackgroundColor:[UIColor clearColor]];
-
+//        [_titleLabel setBackgroundColor:[UIColor redColor]];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_titleLabel];
         [_titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         UIView *separatorView = [[UIView alloc] init];
-        [separatorView setBackgroundColor:self.separatorColor];
+        [separatorView setBackgroundColor:[UIColor clearColor]];
         [self addSubview:separatorView];
         [separatorView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
@@ -34,7 +34,10 @@ const CGFloat PDTSimpleCalendarHeaderTextSize = 12.0f;
         NSDictionary *metricsDictionary = @{@"onePixel" : [NSNumber numberWithFloat:onePixel]};
         NSDictionary *viewsDictionary = @{@"titleLabel" : self.titleLabel, @"separatorView" : separatorView};
 
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(==10)-[titleLabel]-(==10)-|" options:0 metrics:nil views:viewsDictionary]];
+        self.left = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10];
+        self.width = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:20];
+        
+        [self addConstraints:@[self.left, self.width]];
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[titleLabel]|" options:0 metrics:nil views:viewsDictionary]];
 
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[separatorView]|" options:0 metrics:nil views:viewsDictionary]];
@@ -50,7 +53,7 @@ const CGFloat PDTSimpleCalendarHeaderTextSize = 12.0f;
 - (UIColor *)textColor
 {
     if(_textColor == nil) {
-        _textColor = [[[self class] appearance] textColor];
+        _textColor = [UIColor colorWithRed:251/255.0 green:199/255.0 blue:7/255.0 alpha:1.0];
     }
 
     if(_textColor != nil) {

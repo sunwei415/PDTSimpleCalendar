@@ -35,4 +35,6 @@
  */
 @property (nonatomic, strong) UIColor *separatorColor UI_APPEARANCE_SELECTOR;
 
+@property (nonatomic, strong) NSLayoutConstraint *left;
+@property (nonatomic, strong) NSLayoutConstraint *width;
 @end
