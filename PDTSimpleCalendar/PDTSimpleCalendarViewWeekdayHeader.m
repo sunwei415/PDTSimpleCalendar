@@ -66,7 +66,7 @@ const CGFloat PDTSimpleCalendarWeekdayHeaderHeight = 35.0f;
             UILabel *weekdaySymbolLabel = [[UILabel alloc] init];
             weekdaySymbolLabel.font = self.textFont;
             weekdaySymbolLabel.text = [adjustedSymbols[index] uppercaseString];
-            weekdaySymbolLabel.textColor = self.textColor;
+            weekdaySymbolLabel.textColor = index ==0 || index ==6 ? [UIColor colorWithRed:251.f/255 green:199.f/255 blue:7.f/255 alpha:1.0] : self.textColor;
             weekdaySymbolLabel.textAlignment = NSTextAlignmentCenter;
             weekdaySymbolLabel.backgroundColor = [UIColor clearColor];
             weekdaySymbolLabel.translatesAutoresizingMaskIntoConstraints = NO;
