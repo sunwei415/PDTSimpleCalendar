@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B4E30FC1B6FB97F00BF77A7 /* PDTSimpleCalendarViewWeekdayHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4E30FB1B6FB97F00BF77A7 /* PDTSimpleCalendarViewWeekdayHeader.m */; };
+		1CB5B3C1C3B28E0F2C45901D /* CalendarTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5B6EBAA1D400C57436840 /* CalendarTestViewController.m */; };
 		580967F2911265DD7EF4E9E6 /* libPods-PDTSimpleCalendarDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3631001A7D577179C3BFFBC /* libPods-PDTSimpleCalendarDemo.a */; };
 		89594315180CB350007DEC5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89594314180CB350007DEC5D /* Foundation.framework */; };
 		89594317180CB350007DEC5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89594316180CB350007DEC5D /* CoreGraphics.framework */; };
@@ -29,6 +30,8 @@
 /* Begin PBXFileReference section */
 		1B4E30FA1B6FB97F00BF77A7 /* PDTSimpleCalendarViewWeekdayHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewWeekdayHeader.h; path = ../PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.h; sourceTree = "<group>"; };
 		1B4E30FB1B6FB97F00BF77A7 /* PDTSimpleCalendarViewWeekdayHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewWeekdayHeader.m; path = ../PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.m; sourceTree = "<group>"; };
+		1CB5B47CA465D2CAD26B74E1 /* CalendarTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarTestViewController.h; sourceTree = "<group>"; };
+		1CB5B6EBAA1D400C57436840 /* CalendarTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarTestViewController.m; sourceTree = "<group>"; };
 		702904914C7D605EDBA91B7C /* Pods-PDTSimpleCalendarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDTSimpleCalendarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PDTSimpleCalendarDemo/Pods-PDTSimpleCalendarDemo.release.xcconfig"; sourceTree = "<group>"; };
 		89594311180CB350007DEC5D /* PDTSimpleCalendarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDTSimpleCalendarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89594314180CB350007DEC5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +124,8 @@
 				89594324180CB350007DEC5D /* PDTAppDelegate.m */,
 				89594326180CB350007DEC5D /* Images.xcassets */,
 				8959431B180CB350007DEC5D /* Supporting Files */,
+				1CB5B6EBAA1D400C57436840 /* CalendarTestViewController.m */,
+				1CB5B47CA465D2CAD26B74E1 /* CalendarTestViewController.h */,
 			);
 			path = PDTSimpleCalendarDemo;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				89594325180CB350007DEC5D /* PDTAppDelegate.m in Sources */,
 				8959434C180CB47B007DEC5D /* PDTSimpleCalendarViewHeader.m in Sources */,
 				8959434D180CB47B007DEC5D /* PDTSimpleCalendarViewCell.m in Sources */,
+				1CB5B3C1C3B28E0F2C45901D /* CalendarTestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

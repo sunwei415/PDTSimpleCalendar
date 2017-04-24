@@ -10,6 +10,8 @@
 #import "PDTSimpleCalendarViewController.h"
 #import "PDTSimpleCalendarViewCell.h"
 #import "PDTSimpleCalendarViewHeader.h"
+#import "TPRViewControllerTestContainer.h"
+#import "CalendarTestViewController.h"
 
 @interface PDTAppDelegate () <PDTSimpleCalendarViewDelegate>
 
@@ -29,47 +31,43 @@
 
     [self initCustomDates];
 
-    PDTSimpleCalendarViewController *calendarViewController = [[PDTSimpleCalendarViewController alloc] init];
-    //This is the default behavior, will display a full year starting the first of the current month
-    [calendarViewController setDelegate:self];
-    calendarViewController.weekdayHeaderEnabled = YES;
-    calendarViewController.weekdayTextType = PDTSimpleCalendarViewWeekdayTextTypeVeryShort;
+    self.window.rootViewController = [[TPRViewControllerTestContainer alloc] initWithViewControllerClasses:@[CalendarTestViewController.class]];
 
-    PDTSimpleCalendarViewController *hebrewCalendarViewController = [[PDTSimpleCalendarViewController alloc] init];
-    //Example of how you can change the default calendar
-    //Other options you can try NSPersianCalendar, NSIslamicCalendar, NSIndianCalendar, NSJapaneseCalendar, NSRepublicOfChinaCalendar
-    NSCalendar *hebrewCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSHebrewCalendar];
-    hebrewCalendar.locale = [NSLocale currentLocale];
-    [hebrewCalendarViewController setCalendar:hebrewCalendar];
-
-    PDTSimpleCalendarViewController *dateRangeCalendarViewController = [[PDTSimpleCalendarViewController alloc] init];
-    //For this calendar we're gonna allow only a selection between today and today + 3months.
-    dateRangeCalendarViewController.firstDate = [NSDate date];
-    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    offsetComponents.month = 3;
-    NSDate *lastDate =[dateRangeCalendarViewController.calendar dateByAddingComponents:offsetComponents toDate:[NSDate date] options:0];
-    dateRangeCalendarViewController.lastDate = lastDate;
-
-    //Set the edgesForExtendedLayout to UIRectEdgeNone
-    if ([UIViewController instancesRespondToSelector:@selector(edgesForExtendedLayout)]) {
-        [calendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
-        [hebrewCalendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
-        [dateRangeCalendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
-
-    //Create Navigation Controller
-    UINavigationController *defaultNavController = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
-    [calendarViewController setTitle:@"SimpleCalendar"];
-
-    UINavigationController *hebrewNavController = [[UINavigationController alloc] initWithRootViewController:hebrewCalendarViewController];
-    [hebrewCalendarViewController setTitle:@"Hebrew Calendar"];
-
-    UINavigationController *dateRangeNavController = [[UINavigationController alloc] initWithRootViewController:dateRangeCalendarViewController];
-    [dateRangeCalendarViewController setTitle:@"Custom Range"];
-
-    //Create the Tab Bar Controller
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    [tabBarController setViewControllers:@[defaultNavController, hebrewNavController, dateRangeNavController]];
+//    PDTSimpleCalendarViewController *hebrewCalendarViewController = [[PDTSimpleCalendarViewController alloc] init];
+//    //Example of how you can change the default calendar
+//    //Other options you can try NSPersianCalendar, NSIslamicCalendar, NSIndianCalendar, NSJapaneseCalendar, NSRepublicOfChinaCalendar
+//    NSCalendar *hebrewCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSHebrewCalendar];
+//    hebrewCalendar.locale = [NSLocale currentLocale];
+//    [hebrewCalendarViewController setCalendar:hebrewCalendar];
+//
+//    PDTSimpleCalendarViewController *dateRangeCalendarViewController = [[PDTSimpleCalendarViewController alloc] init];
+//    //For this calendar we're gonna allow only a selection between today and today + 3months.
+//    dateRangeCalendarViewController.firstDate = [NSDate date];
+//    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+//    offsetComponents.month = 3;
+//    NSDate *lastDate =[dateRangeCalendarViewController.calendar dateByAddingComponents:offsetComponents toDate:[NSDate date] options:0];
+//    dateRangeCalendarViewController.lastDate = lastDate;
+//
+//    //Set the edgesForExtendedLayout to UIRectEdgeNone
+//    if ([UIViewController instancesRespondToSelector:@selector(edgesForExtendedLayout)]) {
+//        [calendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+//        [hebrewCalendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+//        [dateRangeCalendarViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+//    }
+//
+//    //Create Navigation Controller
+//    UINavigationController *defaultNavController = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
+//    [calendarViewController setTitle:@"SimpleCalendar"];
+//
+//    UINavigationController *hebrewNavController = [[UINavigationController alloc] initWithRootViewController:hebrewCalendarViewController];
+//    [hebrewCalendarViewController setTitle:@"Hebrew Calendar"];
+//
+//    UINavigationController *dateRangeNavController = [[UINavigationController alloc] initWithRootViewController:dateRangeCalendarViewController];
+//    [dateRangeCalendarViewController setTitle:@"Custom Range"];
+//
+//    //Create the Tab Bar Controller
+//    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+//    [tabBarController setViewControllers:@[defaultNavController, hebrewNavController, dateRangeNavController]];
 
 
     //Example of how you can now customize the calendar colors
@@ -86,7 +84,7 @@
 //    [[PDTSimpleCalendarViewHeader appearance] setSeparatorColor:[UIColor orangeColor]];
 //    [[PDTSimpleCalendarViewHeader appearance] setTextFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:8.0]];
 
-    [self.window setRootViewController:tabBarController];
+//    [self.window setRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
 
     return YES;
