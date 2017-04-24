@@ -7,4 +7,5 @@
 
 #import <UIKit/UIKit.h>
 @interface CalendarTestViewController : UIViewController
+@property(nonatomic, strong) NSArray *customDates;
 @end
