@@ -107,6 +107,8 @@
  */
 @property (nonatomic, strong) UIFont *textDefaultFont UI_APPEARANCE_SELECTOR;
 
+@property(nonatomic, strong) UIView *dotView;
+
 /**
  * Set the date for this cell
  *

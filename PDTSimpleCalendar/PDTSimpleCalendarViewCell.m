@@ -7,7 +7,10 @@
 //
 
 #import "PDTSimpleCalendarViewCell.h"
+#import "MASConstraintMaker.h"
+#import "View+MASAdditions.h"
 
+#define DOT_TO_WIDTH_RATIO 6.f/28
 const CGFloat PDTSimpleCalendarCircleSize = 32.0f;
 
 @interface PDTSimpleCalendarViewCell ()
@@ -77,6 +80,8 @@ const CGFloat PDTSimpleCalendarCircleSize = 32.0f;
         [self.dayLabel setTextAlignment:NSTextAlignmentCenter];
         [self.contentView addSubview:self.dayLabel];
 
+        [self addDot];
+
         //Add the Constraints
         [self.dayLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.dayLabel setBackgroundColor:[UIColor clearColor]];
@@ -92,6 +97,41 @@ const CGFloat PDTSimpleCalendarCircleSize = 32.0f;
     }
 
     return self;
+}
+
+- (void)addDot {
+
+    [self.contentView addSubview:self.dotView];
+}
+
+ -(void)layoutSubviews {
+     [super layoutSubviews];
+
+     self.dotView.layer.cornerRadius = self.frame.size.width * DOT_TO_WIDTH_RATIO / 2.f;
+ }
+
+- (UIView *)dotView {
+    if (!_dotView) {
+        _dotView = [UIView new];
+        _dotView.hidden = YES;
+        _dotView.backgroundColor = [UIColor colorWithRed:251.f/255 green:199.f/255 blue:7.f/255 alpha:1.0];
+    }
+
+    return _dotView;
+}
+
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
+}
+
+- (void)updateConstraints {
+    [super updateConstraints];
+
+    [self.dotView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self);
+        make.width.height.equalTo(self.contentView.mas_width).multipliedBy(DOT_TO_WIDTH_RATIO);
+        make.centerX.equalTo(self);
+    }];
 }
 
 - (void)setDate:(NSDate *)date calendar:(NSCalendar *)calendar
@@ -127,7 +167,7 @@ const CGFloat PDTSimpleCalendarCircleSize = 32.0f;
 
     if (self.date && self.delegate) {
         if ([self.delegate respondsToSelector:@selector(simpleCalendarViewCell:shouldUseCustomColorsForDate:)] && [self.delegate simpleCalendarViewCell:self shouldUseCustomColorsForDate:self.date]) {
-
+            self.dotView.hidden = NO;
             if ([self.delegate respondsToSelector:@selector(simpleCalendarViewCell:textColorForDate:)] && [self.delegate simpleCalendarViewCell:self textColorForDate:self.date]) {
                 labelColor = [self.delegate simpleCalendarViewCell:self textColorForDate:self.date];
             }
@@ -164,6 +204,7 @@ const CGFloat PDTSimpleCalendarCircleSize = 32.0f;
     [self.dayLabel setText:@""];
     [self.dayLabel setBackgroundColor:[self circleDefaultColor]];
     [self.dayLabel setTextColor:[self textDefaultColor]];
+    self.dotView.hidden = YES;
 }
 
 #pragma mark - Circle Color Customization Methods
