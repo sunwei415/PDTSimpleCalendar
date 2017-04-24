@@ -7,6 +7,7 @@
 #import "PDTSimpleCalendarViewWeekdayHeader.h"
 #import "PDTSimpleCalendarViewController.h"
 #import "View+MASAdditions.h"
+#import "PDTSimpleCalendarViewCell.h"
 
 @interface CalendarTestViewController()<PDTSimpleCalendarViewDelegate>
 @end
@@ -22,7 +23,15 @@
     calendarViewController.weekdayHeaderEnabled = YES;
     calendarViewController.weekdayTextType = PDTSimpleCalendarViewWeekdayTextTypeVeryShort;
 
+    [[PDTSimpleCalendarViewCell appearance] setTextDefaultColor:[UIColor whiteColor]];
+
+    [[PDTSimpleCalendarViewWeekdayHeader appearance] setHeaderBackgroundColor:[UIColor colorWithRed:44.f/255 green:84.f/255 blue:141.f/255 alpha:1.0]];
+
+    [[PDTSimpleCalendarViewWeekdayHeader appearance] setTextColor:[UIColor whiteColor]];
+
     [self addChildViewController:calendarViewController];
+
+    calendarViewController.view.backgroundColor = [UIColor colorWithRed:78.f/255 green:121.f/255 blue:179.f/255 alpha:1.0];
 
     [self.view addSubview:calendarViewController.view];
 
