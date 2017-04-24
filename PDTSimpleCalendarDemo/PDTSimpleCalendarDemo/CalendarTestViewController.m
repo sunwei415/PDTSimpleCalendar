@@ -27,6 +27,7 @@
 
     [[PDTSimpleCalendarViewCell appearance] setCircleDefaultColor:[UIColor clearColor]];
 
+    [[PDTSimpleCalendarViewCell appearance] setTextDefaultFont:[UIFont fontWithName:@"HYQiHei-EES" size:14]];
 
     [[PDTSimpleCalendarViewWeekdayHeader appearance] setHeaderBackgroundColor:[UIColor colorWithRed:44.f/255 green:84.f/255 blue:141.f/255 alpha:1.0]];
 
