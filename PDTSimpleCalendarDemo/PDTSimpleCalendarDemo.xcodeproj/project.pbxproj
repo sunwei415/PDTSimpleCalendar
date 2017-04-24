@@ -19,6 +19,10 @@
 		8959434D180CB47B007DEC5D /* PDTSimpleCalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594347180CB47B007DEC5D /* PDTSimpleCalendarViewCell.m */; };
 		8959434E180CB47B007DEC5D /* PDTSimpleCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89594349180CB47B007DEC5D /* PDTSimpleCalendarViewController.m */; };
 		8959434F180CB47B007DEC5D /* PDTSimpleCalendarViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959434B180CB47B007DEC5D /* PDTSimpleCalendarViewFlowLayout.m */; };
+		B6CC88FF1EADBAC1004452DB /* Font1_HYQiHei-55S.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6CC88FB1EADBAC1004452DB /* Font1_HYQiHei-55S.otf */; };
+		B6CC89001EADBAC1004452DB /* Font2_HYQiHei-75W.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6CC88FC1EADBAC1004452DB /* Font2_HYQiHei-75W.otf */; };
+		B6CC89011EADBAC1004452DB /* Font3_HYQiHei-45S.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6CC88FD1EADBAC1004452DB /* Font3_HYQiHei-45S.otf */; };
+		B6CC89021EADBAC1004452DB /* Font4_HYQiHei-65S.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6CC88FE1EADBAC1004452DB /* Font4_HYQiHei-65S.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,10 @@
 		8959434A180CB47B007DEC5D /* PDTSimpleCalendarViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewFlowLayout.h; path = ../PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.h; sourceTree = "<group>"; };
 		8959434B180CB47B007DEC5D /* PDTSimpleCalendarViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewFlowLayout.m; path = ../PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.m; sourceTree = "<group>"; };
 		89D411BF18109DA1001584CC /* PDTSimpleCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendar.h; path = ../PDTSimpleCalendar/PDTSimpleCalendar.h; sourceTree = "<group>"; };
+		B6CC88FB1EADBAC1004452DB /* Font1_HYQiHei-55S.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font1_HYQiHei-55S.otf"; path = "Fonts/Font1_HYQiHei-55S.otf"; sourceTree = "<group>"; };
+		B6CC88FC1EADBAC1004452DB /* Font2_HYQiHei-75W.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font2_HYQiHei-75W.otf"; path = "Fonts/Font2_HYQiHei-75W.otf"; sourceTree = "<group>"; };
+		B6CC88FD1EADBAC1004452DB /* Font3_HYQiHei-45S.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font3_HYQiHei-45S.otf"; path = "Fonts/Font3_HYQiHei-45S.otf"; sourceTree = "<group>"; };
+		B6CC88FE1EADBAC1004452DB /* Font4_HYQiHei-65S.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font4_HYQiHei-65S.otf"; path = "Fonts/Font4_HYQiHei-65S.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,7 @@
 		8959431B180CB350007DEC5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B6CC88FA1EADBAB5004452DB /* Fonts */,
 				8959431C180CB350007DEC5D /* PDTSimpleCalendarDemo-Info.plist */,
 				8959431D180CB350007DEC5D /* InfoPlist.strings */,
 				89594320180CB350007DEC5D /* main.m */,
@@ -128,6 +137,17 @@
 				1B4E30FB1B6FB97F00BF77A7 /* PDTSimpleCalendarViewWeekdayHeader.m */,
 			);
 			name = PDTSimpleCalendar;
+			sourceTree = "<group>";
+		};
+		B6CC88FA1EADBAB5004452DB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B6CC88FB1EADBAC1004452DB /* Font1_HYQiHei-55S.otf */,
+				B6CC88FC1EADBAC1004452DB /* Font2_HYQiHei-75W.otf */,
+				B6CC88FD1EADBAC1004452DB /* Font3_HYQiHei-45S.otf */,
+				B6CC88FE1EADBAC1004452DB /* Font4_HYQiHei-65S.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +180,11 @@
 				LastTestingUpgradeCheck = 0610;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Producteev;
+				TargetAttributes = {
+					89594310180CB350007DEC5D = {
+						DevelopmentTeam = G8S4LEN4P2;
+					};
+				};
 			};
 			buildConfigurationList = 8959430C180CB350007DEC5D /* Build configuration list for PBXProject "PDTSimpleCalendarDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -183,7 +208,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CC89011EADBAC1004452DB /* Font3_HYQiHei-45S.otf in Resources */,
 				8959431F180CB350007DEC5D /* InfoPlist.strings in Resources */,
+				B6CC89021EADBAC1004452DB /* Font4_HYQiHei-65S.otf in Resources */,
+				B6CC89001EADBAC1004452DB /* Font2_HYQiHei-75W.otf in Resources */,
+				B6CC88FF1EADBAC1004452DB /* Font1_HYQiHei-55S.otf in Resources */,
 				89594327180CB350007DEC5D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = G8S4LEN4P2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PDTSimpleCalendarDemo/PDTSimpleCalendarDemo-Prefix.pch";
 				INFOPLIST_FILE = "PDTSimpleCalendarDemo/PDTSimpleCalendarDemo-Info.plist";
@@ -309,6 +339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = G8S4LEN4P2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PDTSimpleCalendarDemo/PDTSimpleCalendarDemo-Prefix.pch";
 				INFOPLIST_FILE = "PDTSimpleCalendarDemo/PDTSimpleCalendarDemo-Info.plist";

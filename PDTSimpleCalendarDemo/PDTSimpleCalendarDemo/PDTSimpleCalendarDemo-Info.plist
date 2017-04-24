@@ -41,5 +41,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+<array>
+  <string>Font1_HYQiHei-55S.otf</string>
+  <string>Font2_HYQiHei-75W.otf</string>
+  <string>Font3_HYQiHei-45S.otf</string>
+  <string>Font4_HYQiHei-65S.otf</string>
+</array>
 </dict>
 </plist>
